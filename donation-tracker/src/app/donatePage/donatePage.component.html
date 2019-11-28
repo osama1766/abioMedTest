@@ -1,0 +1,14 @@
+<h1>Donation Page</h1>
+<a routerLink="/home">Home</a>
+<label>Your donation   </label>
+<input id="DonationAmount" type="number" />
+
+<button (click)="submitClicked()">Submit</button>
+
+<label>Your donation percent in target  </label>
+<div *ngIf="pieData">
+    <app-pie-chart [data]="pieData" [dimensions]="dimensions"></app-pie-chart>
+    <label>Your donation : {{donation}}</label>
+    <label>Target : {{target}}</label>
+    <label>Donation percentage : {{donationPercent}}%</label>
+</div>

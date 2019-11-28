@@ -1,0 +1,7 @@
+<p>homepage works!</p>
+<a routerLink="/donate">Donate</a>
+
+<p>Target vs achieved</p>
+<div *ngIf="pieData">
+    <app-pie-chart [data]="pieData" [dimensions]="dimensions"></app-pie-chart>
+</div>
