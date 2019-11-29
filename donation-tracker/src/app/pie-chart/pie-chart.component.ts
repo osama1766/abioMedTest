@@ -66,7 +66,7 @@ export class PieChartComponent implements OnInit {
       const percent = (Math.abs(s.data.value / this.total) * 100).toFixed(2) + '%';
       this.tooltip .style('top', (d3.event.layerY + 15) + 'px').style('left', (d3.event.layerX) + 'px')
         .style('display', 'block').style('opacity', 1).style('height', '40px')
-        this.tooltip.html(`name: ${s.data.name}<br>value: ${s.data.value}<br>share: ${percent}`);
+        this.tooltip.html(`Amount ${s.data.name}: ${s.data.value}<br>share: ${percent}`);
     }.bind(this))
     .on('mouseout', function () {
       this.tooltip.style('display', 'none').style('opacity', 0);

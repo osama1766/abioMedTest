@@ -11,7 +11,9 @@ export class DonatePageComponent implements OnInit {
   dimensions: any;
   donation: number;
   target: number;
-  donationPercent: number;
+  donationPercent: any;
+  remainingAmount: number;
+  totalReceived: number;
 
   constructor(private http: HttpClient) {
     this.dimensions = {height : 300, width: 300};
@@ -22,11 +24,13 @@ export class DonatePageComponent implements OnInit {
 
   updateData(donation: number){
     this.http.get('assets/data.json').subscribe(data => {
-      var dPie1 = [{ name : 'Target', value : data['Target'] - donation}, { name : 'Your Donation', value : donation + data['Received']}]
+      var dPie1 = [{ name : 'Received', value : donation + data['Received']}, { name : 'Remaining', value : data['Target'] -data['Received'] - donation}]
       this.pieData = dPie1;
       this.donation = donation;
       this.target = data['Target'];
-      this.donationPercent = Math.floor((donation * 100) / this.target); 
+      this.donationPercent = ((donation * 100) / this.target).toFixed(2);
+      this.remainingAmount = data['Target'] - data['Received'] - donation;
+      this.totalReceived = data['Received'] + donation
     })
   }
 

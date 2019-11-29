@@ -1,29 +1,32 @@
-<h1>Donation Page</h1>
-<a routerLink="/home">Home</a>
-<label>Your donation   </label>
-<input id="DonationAmount" type="number" />
-
-<button (click)="submitClicked()">Submit</button>
-
-<label>Your donation percent in target  </label>
-<div *ngIf="pieData">
-    <app-pie-chart [data]="pieData" [dimensions]="dimensions"></app-pie-chart>
-    <label>Your donation : {{donation}}</label>
-    <label>Target : {{target}}</label>
-    <label>Donation percentage : {{donationPercent}}%</label>
-</div>
-
-<div id="Donation">
-    <p>Thank You for contributing to our cause</p>
-    <p>You have contibuted %% to our Goal</p>
-</div>
-
-
-<div>
-    <p>
-        Please spread the awarness by sharing this page
-
-    </p>
-    <a routerLink="/home">Return to Home</a>
+<div id="DonationPageComponent">
+    <div id="header">
+        <mat-toolbar color="accent" display="flex">
+            <span>Abiomed Interview Project</span>
+            <span class="example-spacer"></span>
+            <a mat-raised-button routerLink="/home">Home</a>
+            <a mat-raised-button routerLink="/donate">Donate</a>
+        </mat-toolbar>
+    </div>
+    <div id="DonationPageBody">
+        <div id="DonationPageTop">
+            <h3>Please Enter The Amount You Would Like to Donate </h3>
+            <mat-form-field>
+                <input matInput id="DonationAmount" placeholder="Ex: $100" type="number" />
+            </mat-form-field>
+            <button mat-raised-button (click)="submitClicked()">Submit</button>
+        </div>
+        <div id="DonationPageBottom" *ngIf="pieData">
+            <div id="pieDiv">
+                <app-pie-chart [data]="pieData" [dimensions]="dimensions"></app-pie-chart>
+            </div>
+            <div id="textDiv">
+                <p>Thank You for contributing to our cause</p>
+                <p>You have contibuted {{donationPercent}}% towards our goal</p>
+                <p>We have received a total amount of ${{totalReceived}} till date</p>
+                <p>Remaining amount to reach out target is ${{remainingAmount}}</p>
+                <p>Please spread the awarness by sharing this page</p>
+            </div>
+        </div>
+    </div>
 
 </div>

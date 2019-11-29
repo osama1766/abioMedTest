@@ -10,6 +10,11 @@
     flex: 1 1 auto;
 }
 
+#homepageComponent {
+    height: 100%;
+    width: 100%;
+}
+
 #ChildImage {
     background-image: url('../../assets/childImg.jpg');
     background-size: auto 100%;
