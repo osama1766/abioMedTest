@@ -19,8 +19,9 @@ export class PieChartComponent implements OnInit {
   private color: any;
   // Drawing containers
   private svg: any;  private mainContainer: any;
-
+  private tooltip: any;  private total: number;
   ngOnChanges() {
+    this.total = this.data.reduce((sum, it) => sum += it.value, 0);
     this.initialize();
   }
 
@@ -28,6 +29,8 @@ export class PieChartComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.tooltip = d3.select('#pie') // or d3.select('#bar')
+    .append('div').attr('class', 'tooltip').style('display', 'none').style('opacity', 0);  
   }
 
   private initialize() {
@@ -58,6 +61,15 @@ export class PieChartComponent implements OnInit {
       .enter().append('g').append('path')
       .attr('d', this.arc);
     this.slices
-      .attr('fill', (d, i) => this.color(i));
+    .attr('fill', (d, i) => this.color(i))
+    .on('mousemove', function (s) {
+      const percent = (Math.abs(s.data.value / this.total) * 100).toFixed(2) + '%';
+      this.tooltip .style('top', (d3.event.layerY + 15) + 'px').style('left', (d3.event.layerX) + 'px')
+        .style('display', 'block').style('opacity', 1).style('height', '40px')
+        this.tooltip.html(`name: ${s.data.name}<br>value: ${s.data.value}<br>share: ${percent}`);
+    }.bind(this))
+    .on('mouseout', function () {
+      this.tooltip.style('display', 'none').style('opacity', 0);
+    }.bind(this)); 
   }
 }

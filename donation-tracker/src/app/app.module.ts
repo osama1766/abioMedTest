@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { DonatePageComponent } from './donatePage/donatePage.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { HomepageComponent } from './homepage/homepage.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
