@@ -1,27 +1,21 @@
 # DonationTracker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
+This is just a UI project. There is no backend or database linked to this project.
+The data is fetched from a static json file (under assets directory). The data is not saved back to the json file.
 
-## Development server
+The project uses Angular, D3 library and Material UI
+To run the project:
+    Install git
+    Clone this repo
+    Install node
+    Install angular CLI
+    Run "npm i"
+    Run 'ng server' command under the root directory
+    open 'http://localhost:4200' in your browser
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The home page displays some information about the company and a D3 library piechart which shows information about donation status
+There are nagivation button on the top right of the screen.
+The user can click on the "Donate" button if willing to donate to the needy
+On the donation page the user enters the desired donation amount and clicks on the submit button
+A pie chart with the updated information is displayed
+Please note that the data is not being saved back to the json file, so if you try to donate again it may not display accurate data. If you are willing to use this functionality again please navigate to home screen and then navigate back to the donation page.
